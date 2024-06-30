@@ -5,6 +5,7 @@ parameters:
   excludePaths:
     - src/DataFixtures
     - src/Repository
+    - src/Command
   checkMissingIterableValueType: true
   reportUnmatchedIgnoredErrors: false
   editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'

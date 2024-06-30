@@ -16,7 +16,7 @@ grumphp:
                     - 🐛 FIX # Correction de bug
                     - 📖 DOCS # Documentation
                     - 🧪 TEST # Tests
-                    - ➕ ADD # Ajout de dépendances
+                    - 💻 PROD # Mise en production
                     - 📦 DEPS # Mise à jour de dépendances
                     - 🔧 CHORE # Tâches de maintenance
                     - 🎨 STYLE # Style

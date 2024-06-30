@@ -13,6 +13,7 @@
         "doctrine/doctrine-bundle": "^2.12",
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^3.2",
+        "endroid/qr-code-bundle": "^5.0",
         "phpdocumentor/reflection-docblock": "^5.4",
         "phpstan/phpdoc-parser": "^1.29",
         "symfony/asset": "7.1.*",
@@ -52,7 +53,8 @@
             "php-http/discovery": true,
             "symfony/flex": true,
             "symfony/runtime": true,
-            "phpro/grumphp": true
+            "phpro/grumphp": true,
+            "endroid/installer": true
         },
         "sort-packages": true
     },

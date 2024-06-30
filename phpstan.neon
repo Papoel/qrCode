@@ -1,0 +1,11 @@
+parameters:
+  level: max
+  paths:
+    - src
+  excludePaths:
+    - src/DataFixtures
+    - src/Repository
+  checkMissingIterableValueType: true
+  reportUnmatchedIgnoredErrors: false
+  editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
+  editorUrlTitle: '%%relFile%%:%%line%%'

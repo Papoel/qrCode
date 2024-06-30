@@ -1,5 +1,7 @@
 {
     "type": "project",
+    "name": "papoel/qr-code-generator",
+    "description": "A Symfony project for generate QR code from API call",
     "license": "proprietary",
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -49,7 +51,8 @@
         "allow-plugins": {
             "php-http/discovery": true,
             "symfony/flex": true,
-            "symfony/runtime": true
+            "symfony/runtime": true,
+            "phpro/grumphp": true
         },
         "sort-packages": true
     },
@@ -74,6 +77,9 @@
         "symfony/polyfill-php82": "*"
     },
     "scripts": {
+        "before-commit": [
+            "castor before-commit"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
@@ -96,7 +102,9 @@
         }
     },
     "require-dev": {
+        "phpro/grumphp": "^2.6",
         "phpunit/phpunit": "^9.5",
+        "roave/security-advisories": "dev-latest",
         "symfony/browser-kit": "7.1.*",
         "symfony/css-selector": "7.1.*",
         "symfony/debug-bundle": "7.1.*",

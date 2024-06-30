@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QrCode Générateur{% endblock %}
+
+{% block body %}
+    <!-- Connexion-->
+    <section id="sign-in">
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="https://www.cyrcrea.com" target="_blank">
+                    <span class=" h3 text-primary title">Cyrcrea</span>
+                </a>
+                {% if app.user %}
+                    <a class="btn btn-sm btn-outline-danger" href="{{ path('app_logout') }}">
+                        <i class="bi bi-box-arrow-right"></i>
+                        Se déconnecter
+                    </a>
+                {% else %}
+                    <a class="btn btn-sm btn-primary" href="{{ path('app_login') }}">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        Se connecter
+                    </a>
+                {% endif %}
+            </div>
+        </nav>
+    </section>
+
+    {% if app.user %}
+        <main class="wrapper">
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-10">
+
+                        <div class="text-center text-white">
+                            <!-- Page heading-->
+                            <h1 class="mb-5">Générateur de QR Code</h1>
+                        </div>
+
+                        <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+                            <div class="col">
+                                <div class="card border-0 shadow">
+                                    <div class="card-header text-center">
+                                        <h5 class="card-title">QR Code Simple</h5>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <img src="{{ qrCodes.simple }}"
+                                             class="card-img-top rounded"
+                                             alt="QR Code Simple"
+                                             style="height: 200px; object-fit: contain;"
+                                        />
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <span class="badge bg-primary">Classique</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card border-0 shadow">
+                                    <div class="card-header text-center">
+                                        <h5 class="card-title">Changement de Couleur</h5>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <img src="{{ qrCodes.changeColor }}"
+                                             class="card-img-top rounded"
+                                             alt="QR Code avec Changement de Couleur"
+                                             style="height: 200px; object-fit: contain;"
+                                        />
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <span class="badge bg-info">Nouveau</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <a href="#" class="btn btn-primary">Alors Cyril, tu veux générer un QR Code ?</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    {% else %}
+        <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+            <div class="text-center">
+                <h1 class="mb-4">Contenu privé</h1>
+                <p class="lead">Vous devez être connecté pour accéder au générateur de QR Code.</p>
+                <a href="{{ path('app_login') }}" class="btn btn-md btn-primary">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    Se connecter
+                </a>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

@@ -162,6 +162,17 @@ function ccp(): void
     run(command: 'php bin/console cache:clear --env=prod');
 }
 
+// Delete file public/assets + var/cache + var/log
+#[AsTask(description: 'Effacer les fichiers de cache')]
+function clearCache(): void
+{
+    parallel(
+        fn() => run(command: 'rm -rf var/cache'),
+        fn() => run(command: 'rm -rf var/log'),
+        fn() => run(command: 'rm -rf public/assets'),
+    );
+}
+
 /* ******************** 🌐 ROUTING 🌐 ******************** */
 #[AsTask(description: 'Afficher la liste des routes')]
 function routes(): void

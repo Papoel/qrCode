@@ -21,6 +21,7 @@ class MainAuthenticator extends AbstractLoginFormAuthenticator
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_login';
+    public const REDIRECT_SUCCESS_ROUTE = 'home_index';
 
     public function __construct(private readonly UrlGeneratorInterface $urlGenerator)
     {
@@ -48,7 +49,7 @@ class MainAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse(url: $targetPath);
         }
 
-        return new RedirectResponse(url: $this->urlGenerator->generate(name: 'home_index'));
+        return new RedirectResponse(url: $this->urlGenerator->generate(name: self::REDIRECT_SUCCESS_ROUTE));
     }
 
     protected function getLoginUrl(Request $request): string

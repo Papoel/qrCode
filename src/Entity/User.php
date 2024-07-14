@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -35,6 +37,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: Types::STRING, length: 50, nullable: true)]
     private ?string $lastname = null;
+
+    /**
+     * @var Collection<int, QrcodeEntity>
+     */
+    #[ORM\OneToMany(targetEntity: QrcodeEntity::class, mappedBy: 'user', orphanRemoval: true)]
+    private Collection $qrcodes;
+
+    public function __construct()
+    {
+        $this->qrcodes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -130,5 +143,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getFullName(): string
     {
         return sprintf('%s %s', $this->firstname, $this->lastname);
+    }
+
+    /**
+     * @return Collection<int, QrcodeEntity>
+     */
+    public function getQrcodes(): Collection
+    {
+        return $this->qrcodes;
+    }
+
+    public function addQrcode(QrcodeEntity $qrcode): static
+    {
+        if (!$this->qrcodes->contains($qrcode)) {
+            $this->qrcodes->add($qrcode);
+            $qrcode->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQrcode(QrcodeEntity $qrcode): static
+    {
+        if ($this->qrcodes->removeElement($qrcode)) {
+            // set the owning side to null (unless already changed)
+            if ($qrcode->getUser() === $this) {
+                $qrcode->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -1,0 +1,115 @@
+{#<section class="section-padding" id="form_section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-12">
+                <h2 class="mb-4">Créer un Nouveau QR Code</h2>
+
+                {{ form_start(form, {'attr': {'class': 'row g-3 needs-validation', 'novalidate': 'novalidate'}}) }}
+
+                <fieldset class="mb-4">
+                    <legend>Options</legend>
+                    <div class="col-md-6">
+                        {{ form_row(form.label) }}
+                    </div>
+                </fieldset>
+
+                <fieldset class="mb-4">
+                    <legend>QR Code</legend>
+                    <div class="col-md-12">
+                        {{ form_row(form.data) }}
+                    </div>
+                </fieldset>
+
+                <fieldset class="mb-4">
+                    <legend>Couleurs</legend>
+                    <div class="col-md-6">
+                        {{ form_row(form.foregroundColor) }}
+                        <div class="invalid-feedback">
+                            {{ form_errors(form.foregroundColor) }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        {{ form_row(form.backgroundColor) }}
+                        <div class="invalid-feedback">
+                            {{ form_errors(form.backgroundColor) }}
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="mb-4">
+                    <legend>Validation</legend>
+                    <div class="col-12">
+                        <button type="submit" class="btn custom-btn me-3">Enregistrer</button>
+                        <a href="{{ path('qrcode_index') }}" class="btn rounded-5 btn-outline-dark">Retour à la Liste</a>
+                    </div>
+                </fieldset>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</section>#}
+
+<section class="section-padding" id="form_section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-12">
+                <div class="form-card shadow-sm border-0">
+                    <div class="form-card-body p-5">
+                        <h2 class="mb-4 text-center">{{ form_title }}</h2>
+
+                        {{ form_start(form, {'attr': {'class': 'row g-3 needs-validation', 'novalidate': 'novalidate'}}) }}
+
+                        <fieldset class="mb-4">
+                            <legend class="form-legend fw-bold">Options</legend>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{ form_row(form.label) }}
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="mb-4">
+                            <legend class="form-legend fw-bold">QR Code</legend>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{ form_row(form.data) }}
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="mb-4">
+                            <legend class="form-legend fw-bold">Couleurs</legend>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{ form_row(form.foregroundColor) }}
+                                    <div class="invalid-feedback">
+                                        {{ form_errors(form.foregroundColor) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form_row(form.backgroundColor) }}
+                                    <div class="invalid-feedback">
+                                        {{ form_errors(form.backgroundColor) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="mb-4">
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn custom-btn btn-lg w-100 mb-3">{{ button_label }}</button>
+                                    <a href="{{ path('qrcode_index') }}" class="btn btn-outline-dark btn-md w-100">Retour à la Liste</a>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,187 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QrcodeEntity index{% endblock %}
+
+{% block body %}
+    {{ include('partials/_navbar.html.twig') }}
+
+    <main class="mb-4">
+
+        <section class="hero-section hero-50 d-flex justify-content-center align-items-center" id="section_1">
+
+            <div class="section-overlay"></div>
+
+            <svg viewBox="0 0 1962 178" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#3D405B" d="M 0 114 C 118.5 114 118.5 167 237 167 L 237 167 L 237 0 L 0 0 Z" stroke-width="0"></path> <path fill="#3D405B" d="M 236 167 C 373 167 373 128 510 128 L 510 128 L 510 0 L 236 0 Z" stroke-width="0"></path> <path fill="#3D405B" d="M 509 128 C 607 128 607 153 705 153 L 705 153 L 705 0 L 509 0 Z" stroke-width="0"></path><path fill="#3D405B" d="M 704 153 C 812 153 812 113 920 113 L 920 113 L 920 0 L 704 0 Z" stroke-width="0"></path><path fill="#3D405B" d="M 919 113 C 1048.5 113 1048.5 148 1178 148 L 1178 148 L 1178 0 L 919 0 Z" stroke-width="0"></path><path fill="#3D405B" d="M 1177 148 C 1359.5 148 1359.5 129 1542 129 L 1542 129 L 1542 0 L 1177 0 Z" stroke-width="0"></path><path fill="#3D405B" d="M 1541 129 C 1751.5 129 1751.5 138 1962 138 L 1962 138 L 1962 0 L 1541 0 Z" stroke-width="0"></path></svg>
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-12">
+
+                        <h1 class="text-white mb-4 pb-2">Liste des QrCode</h1>
+
+                        <a href="#section_3" class="btn custom-btn smoothscroll me-3">Ressources</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <svg viewBox="0 0 1962 178" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#ffffff" d="M 0 114 C 118.5 114 118.5 167 237 167 L 237 167 L 237 0 L 0 0 Z" stroke-width="0"></path> <path fill="#ffffff" d="M 236 167 C 373 167 373 128 510 128 L 510 128 L 510 0 L 236 0 Z" stroke-width="0"></path> <path fill="#ffffff" d="M 509 128 C 607 128 607 153 705 153 L 705 153 L 705 0 L 509 0 Z" stroke-width="0"></path><path fill="#ffffff" d="M 704 153 C 812 153 812 113 920 113 L 920 113 L 920 0 L 704 0 Z" stroke-width="0"></path><path fill="#ffffff" d="M 919 113 C 1048.5 113 1048.5 148 1178 148 L 1178 148 L 1178 0 L 919 0 Z" stroke-width="0"></path><path fill="#ffffff" d="M 1177 148 C 1359.5 148 1359.5 129 1542 129 L 1542 129 L 1542 0 L 1177 0 Z" stroke-width="0"></path><path fill="#ffffff" d="M 1541 129 C 1751.5 129 1751.5 138 1962 138 L 1962 138 L 1962 0 L 1541 0 Z" stroke-width="0"></path></svg>
+        </section>
+
+
+        <section class="events-section section-padding">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 col-12 mb-lg-5 mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            {% if qrcode_entities|length > 0 %}
+                                <h2>Derniers QrCode</h2>
+                                {{ include('qrcode/_delete_all.html.twig') }}
+                            {% else %}
+                                <div class="container-fluid alert alert-info w-100 py-5">
+                                    <p class="lead">
+                                        <i class="bi bi-info fs-5 me-2"></i>
+                                        Aucun QrCode n'a été généré pour le moment.
+                                    </p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% for qrcode in qrcode_entities %}
+                        <div class=" col-md-6 col-xl-4">
+                            <div class="card mb-2">
+                                <div class="card-header">
+                                    <div class="text-center">
+                                        <h5 class="mb-0">{{ qrcode.data }}</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4 d-flex align-items-center justify-content-between gap-3">
+                                    <img src="{{ asset('uploads/qrcodes/' ~ qrcode.filename) }}" alt="" class="rounded-2" width="60" height="60">
+                                    <div>
+                                        <h5 class="fw-semibold mb-0">{{ qrcode.label }}</h5>
+                                    </div>
+                                    <a href="{{ path('qrcode_show', {'id': qrcode.id}) }}" class="btn custom-btn smoothscroll">Détails</a>
+                                </div>
+                                <div class="card-footer bg-transparent border-top d-flex justify-content-between align-items-center">
+                                    <div id="created_at">
+                                        <span class="lead">Création: </span><br>
+                                        <span class="fw-semibold text-capitalize">
+                                            {{ qrcode.createdAt|format_datetime('full', 'none', locale='fr') }}
+                                        </span>
+                                    </div>
+                                    <div id="updated_at" class="ms-auto text-end">
+                                        <span class="lead">Mise à jour: </span><br>
+                                        <small class="fw-semibold">12/07/2023 à 15h50</small>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <a href="{{ path('qrcode_edit', {'id': qrcode.id}) }}"
+                                           class="btn btn-sm btn-outline-primary rounded-5">
+                                            <i class="bi bi-pencil-square"></i> Modifier
+                                        </a>
+                                       {{ include('qrcode/_delete_form.html.twig', {'id': qrcode.id}) }}
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+
+        <section class="resources-section section-bg section-padding" id="section_3">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 col-12">
+                        <h2 class="mb-3">Ressources Utiles</h2>
+                        <span class="bg-dark badge rounded-pill text-white text-uppercase fw-light py-2 text-center">
+                            <i class="bi bi-info fs-5 me-2 py-2"></i>
+                            <span class="text-warning">
+                                Ces ressources seront prochainement disponibles.
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="row custom-block mb-3">
+                        {% set resources = [
+                            {'title': 'Guide de l\'utilisateur', 'description': 'Découvrez comment utiliser les QR codes efficacement avec notre guide détaillé.'},
+                            {'title': 'Statistiques des QR codes', 'description': 'Accédez aux statistiques et analyses des QR codes générés.'},
+                            {'title': 'Tutoriels Vidéo', 'description': 'Regardez nos tutoriels vidéo pour apprendre à créer et utiliser des QR codes.'},
+                            {'title': 'FAQ', 'description': 'Trouvez des réponses aux questions fréquemment posées sur les QR codes.'},
+                            {'title': 'Support Technique', 'description': 'Besoin d\'aide ? Contactez notre support technique pour une assistance rapide.'},
+                            {'title': 'Blog', 'description': 'Lisez nos articles de blog pour des mises à jour et des astuces sur les QR codes.'}
+                        ] %}
+
+                        {% for resource in resources %}
+                            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ resource.title }}</h5>
+                                        <p class="card-text">{{ resource.description }}</p>
+                                        <span class="btn custom-btn">Lire plus</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {{ include('partials/_footer.html.twig') }}
+{% endblock %}
+
+        {#<div class="table-responsive">
+            <table class="table align-middle caption-top">
+                <caption>List of Qrcode</caption>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Data</th>
+                    <th>ForegroundColor</th>
+                    <th>BackgroundColor</th>
+                    <th>Image</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for qrcode in qrcode_entities %}
+                    <tr>
+                        <td>{{ qrcode.id }}</td>
+                        <td>{{ qrcode.data }}</td>
+                        <td>
+                            <div style="width: 25px; height: 25px; border-radius: 50%; background-color: {{ qrcode.foregroundColor }};"></div>
+                        </td>
+
+                        <td>
+                            <div style="width: 25px; height: 25px; border-radius: 50%; background-color: {{ qrcode.backgroundColor }};"></div>
+                        </td>
+                        <td>
+                            <img class="rounded-2" src="{{ asset('uploads/qrcodes/' ~ qrcode.filename) }}" alt="qrcode" style="width: 50px; height: 50px;">
+                        </td>
+                        <td>
+                            <a href="{{ path('qrcode_show', {'id': qrcode.id}) }}">show</a>
+                            <a href="{{ path('qrcode_edit', {'id': qrcode.id}) }}">edit</a>
+                            <a> {{ include('qrcode/_delete_form.html.twig', {'id': qrcode.id}) }} </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{{ path('qrcode_new') }}">Create new</a>#}

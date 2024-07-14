@@ -19,6 +19,8 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home_index', methods: [Request::METHOD_GET])]
     public function index(): Response
     {
+        // dd('BORDEL DE NAVBAR QUI ME REND FLOU !');
+        // $this->addFlash(type: 'success', message: 'Bienvenue sur la page d\'accueil !');
         /** @var string $projectDir */
         $projectDir = $this->getParameter(name: 'kernel.project_dir');
         $logoPath = sprintf('%s/assets/images/papoel.jpg', $projectDir);
@@ -45,14 +47,14 @@ class HomeController extends AbstractController
         $qrCodes['simple'] = $writer->write(
             qrCode: $qrCode,
             logo: null,
-            label: $label->setText(text: 'Simple')
+            label: $label->setText(text: '') // Sert à ajouter un texte en bas du QR code
         )->getDataUri();
 
         $qrCode->setForegroundColor(foregroundColor: new Color(red: 255, green: 0, blue: 0));
         $qrCodes['changeColor'] = $writer->write(
             qrCode: $qrCode,
             logo: null,
-            label: $label->setText(text: 'Color Change')
+            label: $label->setText(text: '')
         )->getDataUri();
 
         $qrCode->setForegroundColor(foregroundColor: new Color(red: 0, green: 0, blue: 0))->setBackgroundColor(new Color(255, 0, 0));

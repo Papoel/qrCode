@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg sticky-top d-block" style="background-color: #3D405B">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="{{ path('home_index') }}">
+            <img src="{{ asset('images/papoel.png') }}" class="navbar-brand-image" alt="Papoel">
+            <span class="navbar-brand-text">QrCode<small style="color: #F2CC8F">Papoel</small></span>
+        </a>
+
+        <div class="d-lg-none ms-auto me-3">
+            <a class="btn custom-btn custom-border-btn" data-bs-toggle="offcanvas" href="#offcanvasLogin" role="button" aria-controls="offcanvasLogin">Accès Membre</a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-lg-auto">
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" href="#section_1">Accueil</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" href="#section_2">Qui suis-je?</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" href="#section_3">Projets</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" href="#section_4">Adhésion</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link click-scroll" href="#section_5">Contact</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Gestions QrCode
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{ path('qrcode_index') }}">Liste des QrCode</a></li>
+
+                        <li><a class="dropdown-item" href="{{ path('qrcode_new') }}">Créer un QrCode</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            {% if app.user %}
+                <div class="d-none d-lg-block ms-lg-3">
+                    <a class="btn custom-btn custom-border-btn" href="{{ path('app_logout') }}" role="button">Déconnexion</a>
+                </div>
+            {% else %}
+                <div class="d-none d-lg-block ms-lg-3">
+                    <a class="btn custom-btn custom-border-btn" href="{{ path('app_login') }}" role="button">Accès Membre</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du QR Code{% endblock %}
+
+{% block body %}
+    {{ include('partials/_navbar.html.twig') }}
+    <main class="mb-4">
+        <section class="hero-section hero-50 d-flex justify-content-center align-items-center mb-1">
+
+            <div class="section-overlay"></div>
+
+            <svg viewBox="0 0 1962 178" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#3D405B" d="M 0 114 C 118.5 114 118.5 167 237 167 L 237 167 L 237 0 L 0 0 Z"
+                      stroke-width="0"></path>
+                <path fill="#3D405B" d="M 236 167 C 373 167 373 128 510 128 L 510 128 L 510 0 L 236 0 Z"
+                      stroke-width="0"></path>
+                <path fill="#3D405B" d="M 509 128 C 607 128 607 153 705 153 L 705 153 L 705 0 L 509 0 Z"
+                      stroke-width="0"></path>
+                <path fill="#3D405B" d="M 704 153 C 812 153 812 113 920 113 L 920 113 L 920 0 L 704 0 Z"
+                      stroke-width="0"></path>
+                <path fill="#3D405B" d="M 919 113 C 1048.5 113 1048.5 148 1178 148 L 1178 148 L 1178 0 L 919 0 Z"
+                      stroke-width="0"></path>
+                <path fill="#3D405B" d="M 1177 148 C 1359.5 148 1359.5 129 1542 129 L 1542 129 L 1542 0 L 1177 0 Z"
+                      stroke-width="0"></path>
+                <path fill="#3D405B" d="M 1541 129 C 1751.5 129 1751.5 138 1962 138 L 1962 138 L 1962 0 L 1541 0 Z"
+                      stroke-width="0"></path>
+            </svg>
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-12">
+
+                        <h1 class="text-white mb-4 pb-2">Détails du QR Code</h1>
+
+                        <a href="#section_detail" class="btn custom-btn smoothscroll me-3">
+                            <i class="bi bi-eye-fill me-2"></i>
+                            Détail de {{ qrcode.label ?? qrcode.data }}
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <svg viewBox="0 0 1962 178" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#ffffff" d="M 0 114 C 118.5 114 118.5 167 237 167 L 237 167 L 237 0 L 0 0 Z"
+                      stroke-width="0"></path>
+                <path fill="#ffffff" d="M 236 167 C 373 167 373 128 510 128 L 510 128 L 510 0 L 236 0 Z"
+                      stroke-width="0"></path>
+                <path fill="#ffffff" d="M 509 128 C 607 128 607 153 705 153 L 705 153 L 705 0 L 509 0 Z"
+                      stroke-width="0"></path>
+                <path fill="#ffffff" d="M 704 153 C 812 153 812 113 920 113 L 920 113 L 920 0 L 704 0 Z"
+                      stroke-width="0"></path>
+                <path fill="#ffffff" d="M 919 113 C 1048.5 113 1048.5 148 1178 148 L 1178 148 L 1178 0 L 919 0 Z"
+                      stroke-width="0"></path>
+                <path fill="#ffffff" d="M 1177 148 C 1359.5 148 1359.5 129 1542 129 L 1542 129 L 1542 0 L 1177 0 Z"
+                      stroke-width="0"></path>
+                <path fill="#ffffff" d="M 1541 129 C 1751.5 129 1751.5 138 1962 138 L 1962 138 L 1962 0 L 1541 0 Z"
+                      stroke-width="0"></path>
+            </svg>
+        </section>
+
+        <section id="section_detail">
+
+            <div class="custom-detail-card">
+
+                <div class="custom-detail-card-header">
+                    <h3>Détails du QR Code</h3>
+                </div>
+
+                <div class="custom-detail-card-body">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5>ID</h5>
+                                <p>{{ qrcode.id }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5>Site</h5>
+                                <p><a target="_blank" href="{{ qrcode.data }}">{{ qrcode.data }}</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5>Date de création</h5>
+                                <p>{{ qrcode.createdAt|format_datetime('full', 'none')|capitalize }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5>Couleur de premier plan</h5 >
+                                </div>
+                                <div class="color-swatch">
+                                    <span style="background-color: {{ qrcode.foregroundColor }};"></span>
+                                    <p>{{ qrcode.foregroundColor }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5>Couleur de premier plan</h5 >
+                                </div>
+                                <div class="color-swatch">
+                                    <span style="background-color: {{ qrcode.backgroundColor }};"></span>
+                                    <p>{{ qrcode.backgroundColor }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <img class="custom-detail-qr-code" src="{{ asset('uploads/qrcodes/' ~ qrcode.filename) }}" alt="QR Code">
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="custom-detail-actions">
+                                <a href="{{ path('qrcode_edit', {'id': qrcode.id}) }}" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-pencil-square"></i> Modifier
+                                </a>
+                                {{ include('qrcode/_delete_form.html.twig', { 'class': 'd-inline' }) }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="custom-detail-back">
+                    <a href="{{ path('qrcode_index') }}">Retour à la liste</a>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <section class="mt-5">
+        {{ include('partials/_footer.html.twig') }}
+    </section>
+{% endblock %}

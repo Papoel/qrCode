@@ -1,6 +1,6 @@
 main.wrapper {
     position: relative;
-    background: #343a40 url("../images/bg-masthead.jpg") no-repeat center center;
+    /* background: #343a40 url("../images/bg-masthead.jpg") no-repeat center center; */
     background-size: cover;
 }
 main.wrapper:before {
@@ -15,6 +15,9 @@ main.wrapper:before {
 }
 main.wrapper h1, main.wrapper .h1 {
     font-size: 2rem;
+}
+#message-notyf{
+    display: none;
 }
 @media (min-width: 768px) {
     main.wrapper {

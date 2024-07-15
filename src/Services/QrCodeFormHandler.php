@@ -16,11 +16,11 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class QrCodeFormHandler
 {
     public function __construct(
-        private FormFactoryInterface $formFactory,
-        private EntityManagerInterface $entityManager,
-        private Security $security,
-        private QrCodeGeneratorService $qrCodeGeneratorService,
-        private RequestStack $requestStack,
+        private readonly FormFactoryInterface $formFactory,
+        private readonly EntityManagerInterface $entityManager,
+        private readonly Security $security,
+        private readonly QrCodeGeneratorService $qrCodeGeneratorService,
+        private readonly RequestStack $requestStack,
     ) {
     }
 
@@ -37,7 +37,7 @@ class QrCodeFormHandler
             // Generate QR code and get the file path
             $this->qrCodeGeneratorService->generateQrCode(qrcodeEntity: $qrcodeEntity);
 
-            $this->addFlash(type: 'success', message: 'QR code généré avec succès !');
+            sweetalert()->success('Votre QR code a été généré avec succès !');
 
             // Persist and save the entity
             $this->entityManager->persist(object: $qrcodeEntity);
@@ -58,7 +58,7 @@ class QrCodeFormHandler
             // Mettre à jour le QR code
             $this->qrCodeGeneratorService->generateQrCode(qrcodeEntity: $qrcodeEntity);
 
-            $this->addFlash(type: 'success', message: "Le QRCode '".$qrcodeEntity->getData()."' a été mis à jour avec succès !");
+            sweetalert()->success('Le QRCode '.$qrcodeEntity->getData()."' a été mis à jour avec succès !");
 
             // Persister et sauvegarder l'entité
             $this->entityManager->persist(object: $qrcodeEntity);

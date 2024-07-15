@@ -5,20 +5,9 @@
             {% for message in messages %}
                 <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
                     {{ message }}
-                    <button type="button" class="btn-close close-flash-message" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             {% endfor %}
         {% endfor %}
     </section>
 {% endif %}
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        let buttons = document.querySelectorAll('.close-flash-message');
-        buttons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                alert('Hello World');
-            });
-        });
-    });
-</script>

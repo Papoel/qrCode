@@ -16,8 +16,3 @@ import './scripts/theme/animated-headline.js';
 import './scripts/theme/click-scroll.js';
 import './scripts/theme/custom.js';
 import './scripts/theme/modernizr.js';
-
-// Notyf
-import './scripts/notyf.js';
-import './styles/notyf.min.css';
-import './vendor/notyf/notyf.index.js';

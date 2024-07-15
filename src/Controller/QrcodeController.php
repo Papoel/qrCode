@@ -87,6 +87,8 @@ class QrcodeController extends AbstractController
             // Supprimer l'entité
             $entityManager->remove($qrcodeEntity);
             $entityManager->flush();
+
+            sweetalert()->success('Le QR code a été supprimé avec succès !');
         }
 
         return $this->redirectToRoute(route: 'qrcode_index', status: Response::HTTP_SEE_OTHER);
@@ -96,7 +98,6 @@ class QrcodeController extends AbstractController
     public function deleteAll(Request $request, QrcodeService $qrcodeService): Response
     {
         $qrcodeService->deleteAllQrcodes();
-        $this->addFlash(type: 'success', message: 'Tous les QRCodes ont été supprimés avec succès !');
 
         return $this->redirectToRoute(route: 'qrcode_index', status: Response::HTTP_SEE_OTHER);
     }

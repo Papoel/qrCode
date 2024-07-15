@@ -19,8 +19,6 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home_index', methods: [Request::METHOD_GET])]
     public function index(): Response
     {
-        // dd('BORDEL DE NAVBAR QUI ME REND FLOU !');
-        // $this->addFlash(type: 'success', message: 'Bienvenue sur la page d\'accueil !');
         /** @var string $projectDir */
         $projectDir = $this->getParameter(name: 'kernel.project_dir');
         $logoPath = sprintf('%s/assets/images/papoel.jpg', $projectDir);

@@ -35,5 +35,7 @@ class QrcodeService
 
         // Valider les changements dans la base de données
         $this->entityManager->flush();
+
+        sweetalert()->success('Tous les QR codes ont été supprimés avec succès !');
     }
 }

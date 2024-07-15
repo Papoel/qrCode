@@ -31,7 +31,4 @@ return [
         'version' => '1.11.3',
         'type' => 'css',
     ],
-    'notyf' => [
-        'version' => '3.10.0',
-    ],
 ];

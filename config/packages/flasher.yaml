@@ -23,6 +23,6 @@ flasher:
         info: ['info', 'notice', 'alert']
 
     # Criteria to filter displayed notifications (limit, types)
-    filter_criteria:
+    # filter_criteria:
         # Limit number of displayed notifications
-        limit: 5
+        # limit: 5

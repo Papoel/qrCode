@@ -10,9 +10,9 @@ import './styles/theme.css';
 
 // Theme Perso JS
 import './scripts/theme/jquery.min.js';
-// import './scripts/theme/jquery.sticky.js';
+import './scripts/theme/jquery.sticky.js';
 import './scripts/theme/animated-headline.js';
-// import './scripts/theme/bootstrap.bundle.min.js';
+import './scripts/theme/bootstrap.bundle.min.js';
 import './scripts/theme/click-scroll.js';
 import './scripts/theme/custom.js';
 import './scripts/theme/modernizr.js';
